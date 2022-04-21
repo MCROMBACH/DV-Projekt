@@ -94,34 +94,83 @@
 
 		<div class="diagram">
 			classDiagram
-			class Animal {
-				int age
-				String gender
-				isMammal()
-				mate()
+			class Startbildschirm {
+				Jbutton Levelauswahl
+				JButton Highscore
+				JButton Spielerliste
+				levelauswahlActionPerformed()
+				HighscoreActionPerformed()
+				SpielerlisteActionPerformed()
 			}
-			class Duck {
-				String beakColor
-				swim()
-				quack()
+			class Levelauswahl {
+				JButton Level1
+				JButton Level2
+				JButton Level3
+				JButton Level4
+				...
+				JButton zurück
+				Level1ActionPerformed()
+				Level2ActionPerformed()
+				Level3ActionPerformed()
+				Level4ActionPerformed()
+				ZurückActionPerformed()
 			}
-			class Fish {
-				int sizeInFeet
-				canEat()
+			class Highscore {
+				vector highscore
+				JButton zurück
+				ZurückActionPerformed()
 			}
-			class Zebra {
-				bool is_wild
-				run()
+			class Spielerliste {
+				vector spielerliste
+				JButton zurück
+				ZurückActionPerformed()
 			}
-			Animal <|-- Duck
-			Animal <|-- Fish
-			Animal <|-- Zebra
+			
+
+			class Level1 {
+				JPanel spieler
+				GUI Labyrinth 1
+				JButton zurück
+				ZurückActionPerformed()
+			}
+			class Level2 {
+				JPanel spieler
+				GUI Labyrinth 2
+				JButton zurück
+				ZurückActionPerformed()
+			}
+			class Levelxy {
+				JPanel spieler
+				GUI Labyrinthxy
+				JButton zurück
+				ZurückActionPerformed()
+			}
+
+
+			
+			Startbildschirm <|-- Levelauswahl
+			Startbildschirm <|-- Highscore	
+			Startbildschirm <|-- Spielerliste
+			Levelauswahl <|-- Level1
+			Levelauswahl <|-- Level2
+			Levelauswahl <|-- Levelxy
+
+
 		</div>
             
 
 		<h2>4. Aufwandsschätzung und Aufteilung</h2>
 		<p>Schätzen Sie den Aufwand der verschiedenen Teile Ihres Programms ab und legen Sie fest, wie die Aufteilung auf die Gruppenmitglieder aussehen soll.</p>
-         
+         	
+		<ul><li> Starten vom Desktop (Felix Mertsch)
+		<li> Grafisches Fenster Labyrinth im Programm erzeugen und Labyrinthe Analog vorzeichnen (Julia Heizmann, Fabian Mündel, Sabrina Pioch)
+		<li> Objekte Bewegen --> Flüssige Bewegung und Tastatur (Mirco Rombach, Felix Mertsch)
+		<li> Rangliste und Spielerliste(Fabian Mündel)
+		<li> Minimap, mehrere Fenster übereinander (Mirco Rombach)
+		<li> Kommuniaktion zwischen Netbeans, Eclipse und Github (Fabian Mündel, Julia Heizmann, Sabrina Pioch)
+		<li> Sandbox (später wenn das restliche Programm läuft)
+		<p>
+		Der genaue Aufwand ist noch nicht abzusehen.
         <ul>
         <li>
             
