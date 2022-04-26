@@ -1,0 +1,165 @@
+import javax.swing.*;
+
+public class Labyrinth{
+
+	int [][] Spielfeld;
+	int positionX = 0;
+	int positionY = 0;
+
+	Labyrinth(){
+		Spielfeld = new int [5][5];
+		zeigeFeld();
+
+	}
+
+	void befüllen(int zeile, int spalte, int zahl) {
+		Spielfeld [zeile][spalte]=zahl;
+	}
+
+	void zeigeFeld(){
+
+		for (int j=0;j<5;j++){
+			for (int i=0;i<5;i++){
+				System.out.print(Spielfeld[j][i]+"|");
+			}
+			System.out.println();
+		}
+	}
+
+	boolean fertig(int letztes) {
+		if (Spielfeld [4][4]== 1) 
+			letztes = 1;
+		if (letztes ==1)
+			return false;
+		else return true;
+	}
+
+	void laufenrechts(int x,int y) {
+		if (Spielfeld [x][y]==1) {
+			System.out.println("In diese Richtung kannst du nicht gehen");
+		}
+		else
+			Spielfeld [x][y] = 5;
+		Spielfeld [x][y-1] = 0;
+	}
+
+	void laufenlinks(int x,int y) {
+		if (Spielfeld [x][y]==1) {
+			System.out.println("In diese Richtung kannst du nicht gehen");
+		}
+		else
+			Spielfeld [x][y] = 5;
+		Spielfeld [x][y+1] = 0;
+	}
+
+	void laufenhoch(int x,int y) {
+		if (Spielfeld [x][y]==1) {
+			System.out.println("In diese Richtung kannst du nicht gehen");
+		}
+		else
+			Spielfeld [x][y] = 5;
+		Spielfeld [x+1][y] = 0;
+	}
+
+	void laufenrunter(int x,int y) {
+		if (Spielfeld [x][y]==1) {
+			System.out.println("In diese Richtung kannst du nicht gehen");
+		}
+		else
+			Spielfeld [x][y] = 5;
+		Spielfeld [x-1][y] = 0;
+	}
+
+	void plaziereSpieler(int zeile, int spalte) {
+		Spielfeld [zeile-1][spalte-1] = 5;
+	}
+
+	int gebeFünfX() {
+		for (int n=0;n<5;n++) {
+			for (int j=0;j<5;j++) {
+				if (Spielfeld [n][j]==5) 
+					positionX = n;
+
+			}
+		}
+		return positionX;
+	}
+
+	int gebeFünfY() {
+		for (int n=0;n<5;n++) {
+			for (int j=0;j<5;j++) {
+				if (Spielfeld [n][j]==5) 
+					positionY = j;
+
+			}
+		}
+		return positionY;
+	}
+
+
+	public static void main (String args[]) {
+
+		Labyrinth spiel1 = new Labyrinth();
+
+
+		int letztes = 0;
+		while(letztes == 0) {
+			for (int n=0;n<5;n++) {
+				for (int j=0;j<5;j++) {
+					int zahl = Integer.parseInt(JOptionPane.showInputDialog("Wenn hier eine Mauer sein soll Tippen sie die 1, ansonsten die 0"));
+					spiel1.befüllen(n, j, zahl);
+					spiel1.zeigeFeld();
+					System.out.println("-----------------------------------------------------");
+					if (spiel1.fertig(0)== false) {
+						letztes = 1;
+					}
+				}
+			}
+		}
+		int zeile = Integer.parseInt(JOptionPane.showInputDialog("In welcher Zeile soll der SPieler plaziert werden?"));
+		int spalte = Integer.parseInt(JOptionPane.showInputDialog("In welcher Spalte soll der Spieler palziert werden?"));
+		spiel1.plaziereSpieler(zeile, spalte);
+		spiel1.zeigeFeld();
+
+
+		int zug = 1;
+
+		while(zug==1) {
+
+			String richtung = JOptionPane.showInputDialog("In welche richtung möchtest du gehen (WASD)");
+
+			if (richtung.equalsIgnoreCase("w")){
+				int x = spiel1.gebeFünfX();
+				int y = spiel1.gebeFünfY();
+
+				spiel1.laufenhoch(x-1, y);
+			}
+
+			if (richtung.equalsIgnoreCase("s")){
+				int x = spiel1.gebeFünfX();
+				int y = spiel1.gebeFünfY();
+
+				spiel1.laufenrunter(x+1, y);
+			}
+
+			if (richtung.equalsIgnoreCase("a")){
+				int x = spiel1.gebeFünfX();
+				int y = spiel1.gebeFünfY();
+
+				spiel1.laufenlinks(x, y-1);
+			}
+
+			if (richtung.equalsIgnoreCase("d")){
+				int x = spiel1.gebeFünfX();
+				int y = spiel1.gebeFünfY();
+
+
+				spiel1.laufenrechts(x, y+1);
+			}
+			spiel1.zeigeFeld();
+			zug = Integer.parseInt(JOptionPane.showInputDialog("Noch ein zug dann 1"));
+		}
+
+
+	}
+}
