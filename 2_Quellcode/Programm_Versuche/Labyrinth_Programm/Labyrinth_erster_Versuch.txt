@@ -38,36 +38,40 @@ public class Labyrinth{
 		if (Spielfeld [x][y]==1) {
 			System.out.println("In diese Richtung kannst du nicht gehen");
 		}
-		else
+		else{
 			Spielfeld [x][y] = 5;
 		Spielfeld [x][y-1] = 0;
+		}
 	}
 
 	void laufenlinks(int x,int y) {
 		if (Spielfeld [x][y]==1) {
 			System.out.println("In diese Richtung kannst du nicht gehen");
 		}
-		else
+		else{
 			Spielfeld [x][y] = 5;
 		Spielfeld [x][y+1] = 0;
+		}
 	}
 
 	void laufenhoch(int x,int y) {
 		if (Spielfeld [x][y]==1) {
 			System.out.println("In diese Richtung kannst du nicht gehen");
 		}
-		else
+		else{
 			Spielfeld [x][y] = 5;
 		Spielfeld [x+1][y] = 0;
+		}
 	}
 
 	void laufenrunter(int x,int y) {
 		if (Spielfeld [x][y]==1) {
 			System.out.println("In diese Richtung kannst du nicht gehen");
 		}
-		else
+		else{
 			Spielfeld [x][y] = 5;
 		Spielfeld [x-1][y] = 0;
+		}
 	}
 
 	void plaziereSpieler(int zeile, int spalte) {
