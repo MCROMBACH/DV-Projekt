@@ -17,9 +17,7 @@ public class LabyrinthStart extends JPanel {
 	LabyrinthStart() {
 
 		// JButton [][] squares = new JButton[10][10];
-		JTextField field = new JTextField(1);
-		field.addKeyListener(new KL());
-		add(field);
+		
 		
 
 
@@ -35,6 +33,10 @@ public class LabyrinthStart extends JPanel {
 
 			}
 		}
+		
+		JTextField field = new JTextField(50);
+		field.addKeyListener(new KL());
+		add(field);
 
 
 
@@ -80,6 +82,7 @@ public class LabyrinthStart extends JPanel {
 	class KL implements KeyListener{
 		int indX=4;
 		int indY=4;
+	
 
 		public void keyTyped(KeyEvent e) {}
 		
@@ -87,39 +90,59 @@ public class LabyrinthStart extends JPanel {
 			
 			int key = e.getKeyCode();
 			System.out.println(key);
+			
 
 			if (key == KeyEvent.VK_LEFT) {
+				
+				if (squares[indX][indY-1].getBackground()==Color.black||squares[indX][indY-1].getBackground()==Color.green)
+					System.out.println("fehler");
+				else {
 				squares[indX][indY-1].setBackground(Color.red);
 				squares[indX][indY].setBackground(Color.white);
 				indY--;
-		
+				}
+				
 			}
 
 			if (key == KeyEvent.VK_RIGHT) {
+				
+				if (squares[indX][indY+1].getBackground()==Color.black||squares[indX][indY+1].getBackground()==Color.green)
+					System.out.println("fehler");
+				else {
 				squares[indX][indY+1].setBackground(Color.red);
 				squares[indX][indY].setBackground(Color.white);  
 				indY++;
 				System.out.println("du dödel");
-
+				}
 			}
 
 			if (key == KeyEvent.VK_UP) {
+				
+				if (squares[indX-1][indY].getBackground()==Color.black||squares[indX-1][indY].getBackground()==Color.green)
+					System.out.println("fehler");
+				else {
 				squares[indX-1][indY].setBackground(Color.red);
 				squares[indX][indY].setBackground(Color.white);
 				indX--;
 				System.out.println("du dödel");
 
-
+				}
 			}
 
 			if (key == KeyEvent.VK_DOWN) {
+				
+				if (squares[indX+1][indY].getBackground()==Color.black||squares[indX+1][indY].getBackground()==Color.green)
+					System.out.println("fehler");
+				else {
 				squares[indX+1][indY].setBackground(Color.red);
 				squares[indX][indY].setBackground(Color.white);
 				indX++;
 				System.out.println("du dödel");
-
+				}
 			}
-		}
+			}
+			
+		
 		public void keyReleased(KeyEvent e) {}
 
 
@@ -178,7 +201,7 @@ public class LabyrinthStart extends JPanel {
 
 	public static void main(String[] args) {
 
-		Rahmen.inFrame("Mein erstes GUI-Programm", new LabyrinthStart(), 800, 800);
+		Rahmen.inFrame("Mein erstes GUI-Programm", new LabyrinthStart(), 800, 900);
 
 		LabyrinthStart start;
 		start = new LabyrinthStart();
