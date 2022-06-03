@@ -178,7 +178,7 @@ public class Level3 extends JPanel {
         public void actionPerformed(ActionEvent e) {
         
         	FesteLevel level = new FesteLevel();
-        	Layout=level.lesen("Sandbox");
+        	Layout=level.lesen("Level_3");
             for (int i = 0; i < 22; i++) {
                 for (int j = 0; j < 22; j++) {
                     if (Layout[i][j] == 1) {
