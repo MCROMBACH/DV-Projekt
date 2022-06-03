@@ -1,0 +1,11 @@
+#Fri Jun 03 10:41:35 CEST 2022
+Platz3Zeit=0
+Platz4Zeit=0
+Platz4Name=
+Platz5Name=
+Platz2Name=
+Platz3Name=
+Platz5Zeit=0
+Platz1Name=
+Platz2Zeit=0
+Platz1Zeit=0
